@@ -100,7 +100,6 @@ sendGETRequestServer = (urlRequest, option) => {
         return response.text();
     }).then((data) => {
         data = JSON.parse(data);
-        console.log(data);
         if(data.codigo === 1){
         	if(option === 'listarPersonas') {
         		pintarTblClientes(data.datos);
@@ -118,7 +117,9 @@ sendGETRequestServer = (urlRequest, option) => {
         		Swal.fire({
         			icon: 'warning',
         			text: 'No tenemos ningún producto en este momento para ofrecerle.'
-        		});
+        		}).then(() => {
+                    window.location.reload();
+                });;
         	} else {
         		Swal.fire({
         			icon: 'warning',
