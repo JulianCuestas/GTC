@@ -1,0 +1,140 @@
+<html xmlns:th="http://www.thymeleaf.org"  lang="es">
+	<div  th:fragment="clientes">
+	    <div class="row mt-2">
+	        <h3>Gestión TC Clientes</h3>
+	    </div>
+	    <div class="row mb-2">
+	       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNewClient">Nuevo Cliente</button>
+	    </div>
+	    <div class="row">
+	        <div class="table-responsive">
+	            <table id="clientes" class="table table-bordered table-hover table-striped">
+	            </table>
+	        </div>
+        </div>
+        
+        <!-- Modal New Client -->
+        <div class="modal fade" id="modalNewClient" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalNewClientLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="staticBackdropLabel">Nuevo Cliente</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                            <form id="formRegistro">
+                                <div class="form-group">
+                                    <label for="nombreCompleto">Nombre Completo</label>
+                                    <input type="text" class="form-control" id="nombreCompleto" onkeypress="return soloLetras(event)" onkeyup="return soloLetras(event)" maxlength="60" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="numeroIdentificacion">Número de Identificación</label>
+                                    <input type="text" class="form-control" id="numeroIdentificacion" onkeypress="return soloNumeros(event)" onkeyup="return soloNumeros(event)" maxlength="11" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ingresos">Total Ingresos Mensuales</label>
+                                    <div class="input-icon">
+                                        <i>$</i>
+                                        <input type="text" class="form-control" id="ingresos" onkeypress="formatearValor(event)" onkeyup="formatearValor(event)" onpaste="return false" maxlength="15" placeholder="0.0" required>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+	                                <button type="submit" id="btnRegistrar" class="btn btn-primary btn-block">REGISTRAR</button>                         
+	                                <button type="submit" class="btn btn-secondary btn-block" data-dismiss="modal" onclick="limpiarFormRegistroCliente()">CANCELAR</button>                         
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Asignar TC -->
+        <div class="modal fade" id="modalAsignaTC" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalAsignaTCLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="staticBackdropLabel">Asignación de Tarjeta de Crédito</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                            <form id="formAsignaTC">
+                                <div id="divTarjetas">
+                                    <h5>Estas son las tarjetas que puedes adquirir</h5>
+                                    <table id="tableTarjetasDisponibles" class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr style="text-align: center;">
+                                                <th style="display: none;">id</th>
+                                                <th>Entidad</th>
+                                                <th>Cupo Disponible</th>
+                                                <th>Interés Fijo</th>
+                                                <th>Marca</th>
+                                                <th>Elegir</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div id="divConfirmacion" style="display: none;">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <input id="idPersonaHidden" value="0" style="display: none;">
+                                            <ul id="listaDatosTC">
+                                            </ul>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="incluirChip">Tarjeta con chip</label>
+                                                    <select class="form-control" id="incluirChip">
+                                                        <option value="true">SI</option>
+                                                        <option value="false">NO</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit" id="btnAsignarTC" class="btn btn-primary btn-block">CONFIRMAR TARJETA</button>                         
+                                                <button type="submit" class="btn btn-secondary btn-block" data-dismiss="modal" onclick="limpiarFormRegistroCliente()">CANCELAR</button>                         
+                                            </div>
+                                        </div>
+                                      </div>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Mis TC -->
+        <div class="modal fade" id="modalMisTC" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalMisTCLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="staticBackdropLabel">Mis Tarjetas de Crédito</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Tarjetas Asignadas</h5>
+                                <table id="tblMisTarjetas" class="table table-bordered table-hover table-striped"></table>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</html>
