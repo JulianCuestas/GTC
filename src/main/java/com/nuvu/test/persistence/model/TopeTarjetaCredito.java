@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,7 +19,7 @@ public class TopeTarjetaCredito {
 	@Column(name = "id_tope", columnDefinition = "serial")
 	private Integer idTope;
 	@JoinColumn(name = "id_entidad", nullable = false)
-    @OneToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
 	private EntidadBancaria idEntidad;
 	@Column(name = "monto_permitido", nullable = false)
 	private Double montoPermitido;

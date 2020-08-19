@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -24,7 +23,7 @@ public class TarjetaCredito {
 	@Column(columnDefinition = "serial")
 	private Integer idTc;
 	@JoinColumn(name = "id_tope", nullable = false)
-	@OneToOne(optional = false, fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	private TopeTarjetaCredito idTope;
 	@Column(name = "numero_tarjeta", length = 16, nullable = false)
 	private String numeroTarjeta;
