@@ -43,7 +43,6 @@ public class TarjetaCreditoService {
 	}
 	
 	public int insertar(TarjetaCredito tarjeta) {
-		System.out.println("Entra a asignar");
 		String numeroTarjeta = "";
 		do {
 			if(tarjeta.getIdTope().getMarca().equals("VISA")) {
@@ -73,7 +72,7 @@ public class TarjetaCreditoService {
 	 * @return
 	 */
 	private String generarNumeroTarjeta(String identTC) {
-		return identTC+""+(long)(100000000000000L * Math.random());
+		return identTC+""+(long)(1000000000000000L * Math.random());
 	}
 	
 	/**

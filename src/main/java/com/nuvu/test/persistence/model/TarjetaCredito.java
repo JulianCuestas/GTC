@@ -45,7 +45,7 @@ public class TarjetaCredito {
 	private String estado;
 	@JsonBackReference
 	@ManyToOne
-	@JoinColumn(name = "id_persona", insertable = false, updatable = false, nullable = false)
+	@JoinColumn(name = "id_persona", nullable = false)
 	private Persona idPersona;
 	
 	public Integer getIdTc() {
