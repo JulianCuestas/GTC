@@ -21,15 +21,21 @@ public class FrontController {
 		return "inicio/index";
 	}
 	
-	@GetMapping(RutasFront.Tope.TOPESTC)
+	@GetMapping(RutasFront.Tope.TOPES_TC)
 	public String verTopesTC(Model model) {
 		model.addAttribute("template", "topestc");
 		return "inicio/index";
 	}
 	
-	@GetMapping(RutasFront.Entidad.ENTIDADESBC)
+	@GetMapping(RutasFront.Entidad.ENTIDADES_BC)
 	public String verEntidadesBC(Model model) {
 		model.addAttribute("template", "entidadesbc");
+		return "inicio/index";
+	}
+
+	@GetMapping(RutasFront.Simulador.SIMULADORES)
+	public String verSimuladorPagos(Model model) {
+		model.addAttribute("template", "simuladores");
 		return "inicio/index";
 	}
 }

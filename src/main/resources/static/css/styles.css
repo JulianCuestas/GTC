@@ -17,3 +17,14 @@
     padding-left: 25px;
     padding-right: 0;
 }
+
+form > img {
+    max-width: 13vh !important;
+}
+
+@media (max-width: 500px) {
+	h1 {
+		font-size: 2rem !important;
+	}
+}
+  

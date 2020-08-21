@@ -15,11 +15,15 @@ public class RutasFront {
 	}
 	
 	public final static class Tope {
-		public static final String TOPESTC = "/topestc";
+		public static final String TOPES_TC = "/topestc";
 	}
 
 	public final static class Entidad {
-		public static final String ENTIDADESBC = "/entidadesbc";
+		public static final String ENTIDADES_BC = "/entidadesbc";
+	}
+	
+	public final static class Simulador {
+		public static final String SIMULADORES = "/simuladores";
 	}
 	
 }
