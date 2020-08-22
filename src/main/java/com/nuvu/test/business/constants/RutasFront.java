@@ -25,5 +25,5 @@ public class RutasFront {
 	public final static class Simulador {
 		public static final String SIMULADORES = "/simuladores";
 	}
-	
+
 }

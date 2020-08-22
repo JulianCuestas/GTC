@@ -38,4 +38,9 @@ public class FrontController {
 		model.addAttribute("template", "simuladores");
 		return "inicio/index";
 	}
+	
+	@GetMapping("error-server")
+	public String verErrorServer(Model model) {
+		throw new RuntimeException("test exception");
+	}
 }
